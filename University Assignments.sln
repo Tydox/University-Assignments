@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework 7", "Homework 7", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 7.2", "Homework 7.2\Homework 7.2.vcxproj", "{386C7235-74AD-4EF7-A715-6731FC0F915E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 7.3", "Homework 7.3\Homework 7.3.vcxproj", "{7FB1997B-DB26-47B0-860A-7E1163530653}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,6 +35,14 @@ Global
 		{386C7235-74AD-4EF7-A715-6731FC0F915E}.Release|x64.Build.0 = Release|x64
 		{386C7235-74AD-4EF7-A715-6731FC0F915E}.Release|x86.ActiveCfg = Release|Win32
 		{386C7235-74AD-4EF7-A715-6731FC0F915E}.Release|x86.Build.0 = Release|Win32
+		{7FB1997B-DB26-47B0-860A-7E1163530653}.Debug|x64.ActiveCfg = Debug|x64
+		{7FB1997B-DB26-47B0-860A-7E1163530653}.Debug|x64.Build.0 = Debug|x64
+		{7FB1997B-DB26-47B0-860A-7E1163530653}.Debug|x86.ActiveCfg = Debug|Win32
+		{7FB1997B-DB26-47B0-860A-7E1163530653}.Debug|x86.Build.0 = Debug|Win32
+		{7FB1997B-DB26-47B0-860A-7E1163530653}.Release|x64.ActiveCfg = Release|x64
+		{7FB1997B-DB26-47B0-860A-7E1163530653}.Release|x64.Build.0 = Release|x64
+		{7FB1997B-DB26-47B0-860A-7E1163530653}.Release|x86.ActiveCfg = Release|Win32
+		{7FB1997B-DB26-47B0-860A-7E1163530653}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,6 +50,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1A8BA6D7-A7FD-4B8A-ACD6-8E79D2F30518} = {860FC6D9-938E-44F4-A6DF-CA850AA2D32D}
 		{386C7235-74AD-4EF7-A715-6731FC0F915E} = {860FC6D9-938E-44F4-A6DF-CA850AA2D32D}
+		{7FB1997B-DB26-47B0-860A-7E1163530653} = {860FC6D9-938E-44F4-A6DF-CA850AA2D32D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C1EBC4B-E1EA-467C-AF59-F892A69381F4}
