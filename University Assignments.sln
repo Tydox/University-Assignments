@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 7.1", "Homework 7.1\Homework 7.1.vcxproj", "{1A8BA6D7-A7FD-4B8A-ACD6-8E79D2F30518}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework 7", "Homework 7", "{860FC6D9-938E-44F4-A6DF-CA850AA2D32D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -24,6 +26,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1A8BA6D7-A7FD-4B8A-ACD6-8E79D2F30518} = {860FC6D9-938E-44F4-A6DF-CA850AA2D32D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C1EBC4B-E1EA-467C-AF59-F892A69381F4}
