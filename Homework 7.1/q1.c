@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-
 #define  SIZE 5
 
 int isnum_reverse(int array1[], int size1, int array2[], int size2);
