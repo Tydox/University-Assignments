@@ -1,22 +1,53 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-#define SIZE1 3
-#define SIZE2 4
+#define SIZE1 2
+#define SIZE2 2
 
-void maxchar(int chararray[][SIZE1], int size);
+void maxchar(char chararray[][SIZE1], int size1, int size2);
 
 void main()
 {
-	char tav_array[SIZE2][SIZE1] = { 0 };
-	
+	char tav_matrix[SIZE2][SIZE1] = { 0 };
+	maxchar(tav_matrix, SIZE2, SIZE1);
 }
 
-void maxchar(int chararray[][SIZE1], int size)
+void maxchar(char chararray[][SIZE1], int size1, int size2)
 {
-	for (int i = 0; i < size; i++)
+	
+	printf("Enter your character one by one:\n");
+	for (int row = 0; row < size1; ++row)//rows
 	{
-		printf("Enter value %d:", i + 1);
-		scanf_s("%d", &chararray[i]);
+		for (int column = 0; column < size2; ++column)//column
+		{
+			printf("Enter value:[%d][%d]: \n", row, column + 1);
+			scanf(" %c", &chararray[row][column]);
+		}
 	}
+
+	for (int row = 0; row < size1; ++row)//rows
+	{
+		for (int column = 0; column < size2; ++column)//column
+		{
+			printf("Testing Memory Value:[%d][%d]: %c \n", row, column + 1, chararray[row][column]);
+
+		}
+	}
+	char maxtav = chararray[0][0];
+	//row0+column all
+	for (int row = 0; row < size1; ++row)//rows
+	{
+		for (int column = 0; column < size2-1; ++column)//column
+		{
+			if (chararray[row][column + 1] > maxtav)
+			{
+				maxtav = chararray[row][column+1];
+			}
+
+		}
+	}
+	
+	printf(" %c", maxtav);
+	
+	
 }
