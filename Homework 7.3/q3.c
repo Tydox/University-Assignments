@@ -1,8 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-#define SIZE1 2
-#define SIZE2 2
+#define SIZE1 3
+#define SIZE2 3
 
 void maxchar(char chararray[][SIZE1], int size1, int size2);
 
@@ -14,7 +14,7 @@ void main()
 
 void maxchar(char chararray[][SIZE1], int size1, int size2)
 {
-	
+
 	printf("Enter your character one by one:\n");
 	for (int row = 0; row < size1; ++row)//rows
 	{
@@ -33,21 +33,40 @@ void maxchar(char chararray[][SIZE1], int size1, int size2)
 
 		}
 	}
+
+	printf("\nTwo Dimensional array elements:\n");
+	for (int i = 0; i < size1; i++) {
+		for (int j = 0; j < size2; j++) {
+			printf(" %c", chararray[i][j]);
+			if (j == size2 - 1) {
+				printf("\n");
+			}
+		}
+	}
 	char maxtav = chararray[0][0];
-	//row0+column all
+
 	for (int row = 0; row < size1; ++row)//rows
 	{
-		for (int column = 0; column < size2-1; ++column)//column
+		if (maxtav < chararray[row][0]) 
 		{
-			if (chararray[row][column + 1] > maxtav)
-			{
-				maxtav = chararray[row][column+1];
-			}
-
+			maxtav = chararray[row][0];
+		}
+		if (maxtav < chararray[row][size2-1])
+		{
+			maxtav = chararray[row][size2-1];
 		}
 	}
 	
-	printf(" %c", maxtav);
-	
-	
+	for (int col = 0; col < size2; ++col)//rows
+	{
+		if (maxtav < chararray[0][col])
+		{
+			maxtav = chararray[0][col];
+		}
+		if (maxtav < chararray[size1 - 1][col])
+		{
+			maxtav = chararray[size1 - 1][col];
+	}
+	}
+	printf("\nMAX TAV %c", maxtav);
 }
