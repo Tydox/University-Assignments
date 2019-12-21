@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#define  SIZE 5
+#define  SIZE 3
 
 int isnum_reverse(int array1[], int size1, int array2[], int size2);
 void num_arrayinput(int array[], int size);
@@ -46,7 +46,7 @@ int isnum_reverse(int array1[], int size1, int array2[], int size2)
 void num_arrayinput(int array[], int size)
 {
 	int temp_num, solo_num;
-	printf("Enter a number: \n");
+	printf("Enter a number (%d) \n", size);
 	scanf("%d", &temp_num);
 	for (int i = size-1; i > -1; --i)
 	{
