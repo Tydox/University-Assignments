@@ -24,4 +24,4 @@ void kth_last_word(char const words[], int k, char kth[])
 הפונקציה תחזיר את המילה במקום ה-k מהסוף
 
 
-*/
+*/ 
