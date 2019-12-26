@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.705
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 7.1", "Homework 7.1\Homework 7.1.vcxproj", "{1A8BA6D7-A7FD-4B8A-ACD6-8E79D2F30518}"
 EndProject
@@ -22,6 +22,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Question 8.4", "Question 8.4\Question 8.4.vcxproj", "{C72CF2E0-F977-469D-B99E-03B3FA4A7D6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework", "Homework", "{096CA802-CCCA-40E1-BD68-17F4EA19FF58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework 8", "Homework 8", "{EF6CED2A-E279-4CE2-959B-45A668D7205D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 8.1", "Homework 8.1\Homework 8.1.vcxproj", "{5E806F5E-0076-49A6-A604-27EE2DE4C471}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +91,14 @@ Global
 		{C72CF2E0-F977-469D-B99E-03B3FA4A7D6E}.Release|x64.Build.0 = Release|x64
 		{C72CF2E0-F977-469D-B99E-03B3FA4A7D6E}.Release|x86.ActiveCfg = Release|Win32
 		{C72CF2E0-F977-469D-B99E-03B3FA4A7D6E}.Release|x86.Build.0 = Release|Win32
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471}.Debug|x64.ActiveCfg = Debug|x64
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471}.Debug|x64.Build.0 = Debug|x64
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471}.Debug|x86.ActiveCfg = Debug|Win32
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471}.Debug|x86.Build.0 = Debug|Win32
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471}.Release|x64.ActiveCfg = Release|x64
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471}.Release|x64.Build.0 = Release|x64
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471}.Release|x86.ActiveCfg = Release|Win32
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +112,8 @@ Global
 		{22C4706B-8A1B-4783-A462-42F6EB5EAE3A} = {860FC6D9-938E-44F4-A6DF-CA850AA2D32D}
 		{1C7B06EB-A231-498F-92D7-0D089F34F798} = {8EFDA0B3-740A-4A91-9456-3959BF3922CF}
 		{C72CF2E0-F977-469D-B99E-03B3FA4A7D6E} = {8EFDA0B3-740A-4A91-9456-3959BF3922CF}
+		{EF6CED2A-E279-4CE2-959B-45A668D7205D} = {096CA802-CCCA-40E1-BD68-17F4EA19FF58}
+		{5E806F5E-0076-49A6-A604-27EE2DE4C471} = {EF6CED2A-E279-4CE2-959B-45A668D7205D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C1EBC4B-E1EA-467C-AF59-F892A69381F4}
