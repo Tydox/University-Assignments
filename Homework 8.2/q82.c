@@ -27,39 +27,25 @@ void main()
 
 int str_super_cmp(char firstIdx[], char secondIdx[], int firstidxnum, int secondIdxnum, int cmpnum)
 {
-	int verifier = 0;
-	int i = firstidxnum + 1;
-	int j = secondIdxnum + 1;
+	int i = firstidxnum;
+	int j = secondIdxnum;
 	int w = cmpnum;
 	while ((firstIdx[i] != '\0') && (secondIdx[j] != '\0') && (w>0))
 	{
 		
 		if (firstIdx[i] > 'A' && firstIdx[i] < 'Z') //ignore lowercase difference
 		{
-			firstIdx[i] -= 32;
+			firstIdx[i] += 32;
 		}
 		if (secondIdx[j] > 'A' && secondIdx[j] < 'Z') //ignore lowercase difference
 		{
-			secondIdx[j] -= 32;
+			secondIdx[j] += 32;
 		}
-
-			if ((firstIdx[i] - secondIdx[j]) != 0)
+		if (firstIdx[i] != secondIdx[j])
 			{
+				return firstIdx[i] - secondIdx[j];
 
-				if ((firstIdx[i] - secondIdx[j]) > 0)
-				{
-					verifier = verifier + (firstIdx[i] - secondIdx[j]);
-				}
-				if ((secondIdx[j] - firstIdx[i]) > 0)
-				{
-					verifier = verifier + (secondIdx[j] - firstIdx[i]);
-				}
-
-			/*verifier = ((firstIdx[i] - secondIdx[j]) > 0) ? firstIdx[i] - secondIdx[j] : verifier;
-			verifier = ((secondIdx[j] - firstIdx[i]) > 0) ? secondIdx[j] - firstIdx[i] : verifier;
-			verifier = ((secondIdx[j] - firstIdx[i]) == 0) ? 0 : verifier;*/
-
-		}
+			}
 			++i;
 			++j;
 			--w;
@@ -67,12 +53,5 @@ int str_super_cmp(char firstIdx[], char secondIdx[], int firstidxnum, int second
 		
 		
 	}
-	return verifier;
+	return 0;
 }
-
-////if ((firstIdx[i] == '\0') || (secondIdx[j] == '\0') || (w==0)) // break the loop when reaching the end
-//{
-//	break;
-//}
-//while ((firstIdx[i] == secondIdx[j]) && (cmpnum>-1)&& (firstIdx[i] != '\0') && (secondIdx[j] != '\0'))
-//for (int i = firstidxnum, j = secondIdxnum, w = 0; w < cmpnum; ++i, ++j, ++w) //i first index, j second index, w is char number to go over
