@@ -13,7 +13,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 7.3", "Homework 7.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 7.3.2", "Homework 7.3.2\Homework 7.3.2.vcxproj", "{63629AEC-4504-451B-AA63-DA0437B0BE21}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 7.1new", "Homework 7.1new\Homework 7.1new.vcxproj", "{22C4706B-8A1B-4783-A462-42F6EB5EAE3A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 7.1.2", "Homework 7.1new\Homework 7.1new.vcxproj", "{22C4706B-8A1B-4783-A462-42F6EB5EAE3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Class Sandbox", "Class Sandbox", "{8EFDA0B3-740A-4A91-9456-3959BF3922CF}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 8.1", "Homework 8.1\Homework 8.1.vcxproj", "{5E806F5E-0076-49A6-A604-27EE2DE4C471}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 8.2", "Homework 8.2\Homework 8.2.vcxproj", "{669610F1-7F9F-4CAE-A1C4-A6C3E78773B9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework 8.3", "Homework 8.3\Homework 8.3.vcxproj", "{104C43CB-B03A-4D8D-8346-68AA9A43F45A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +111,14 @@ Global
 		{669610F1-7F9F-4CAE-A1C4-A6C3E78773B9}.Release|x64.Build.0 = Release|x64
 		{669610F1-7F9F-4CAE-A1C4-A6C3E78773B9}.Release|x86.ActiveCfg = Release|Win32
 		{669610F1-7F9F-4CAE-A1C4-A6C3E78773B9}.Release|x86.Build.0 = Release|Win32
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A}.Debug|x64.ActiveCfg = Debug|x64
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A}.Debug|x64.Build.0 = Debug|x64
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A}.Debug|x86.ActiveCfg = Debug|Win32
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A}.Debug|x86.Build.0 = Debug|Win32
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A}.Release|x64.ActiveCfg = Release|x64
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A}.Release|x64.Build.0 = Release|x64
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A}.Release|x86.ActiveCfg = Release|Win32
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +135,7 @@ Global
 		{EF6CED2A-E279-4CE2-959B-45A668D7205D} = {096CA802-CCCA-40E1-BD68-17F4EA19FF58}
 		{5E806F5E-0076-49A6-A604-27EE2DE4C471} = {EF6CED2A-E279-4CE2-959B-45A668D7205D}
 		{669610F1-7F9F-4CAE-A1C4-A6C3E78773B9} = {EF6CED2A-E279-4CE2-959B-45A668D7205D}
+		{104C43CB-B03A-4D8D-8346-68AA9A43F45A} = {EF6CED2A-E279-4CE2-959B-45A668D7205D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C1EBC4B-E1EA-467C-AF59-F892A69381F4}
