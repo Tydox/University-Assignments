@@ -19,13 +19,13 @@ void main()
 void password_encrypt(char passwordstr[], int idx)
 {
 	char tempstr[501] = { '\0' };
-	int i = idx;
+	int i = idx+1;
 	int j = 0;
 	for (j; passwordstr[i] != '\0'; ++i, ++j) // copy text after cut
 	{
 		tempstr[j] = passwordstr[i];
 	}
-	for (int i = 0; i < idx; ++i,++j) // copy text before the cut
+	for (int i = 0; i < idx+1; ++i,++j) // copy text before the cut
 	{
 		tempstr[j] = passwordstr[i];
 	}
