@@ -37,11 +37,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strings", "Strings", "{6475
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pointers", "Pointers", "{2E6BBCC9-42FB-4560-8DA4-7CB281DAC7F2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Question 1", "Question 1\Question 1.vcxproj", "{1F110A74-BB7C-4298-85F6-3BBE320BD904}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Question 9.1", "Question 9.1\Question 1.vcxproj", "{1F110A74-BB7C-4298-85F6-3BBE320BD904}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Question 2", "Question 2\Question 2.vcxproj", "{83EDD771-2C15-4452-81B4-EEBF80F9C861}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Question 9.2", "Question 9.2\Question 2.vcxproj", "{83EDD771-2C15-4452-81B4-EEBF80F9C861}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Question 3", "Question 3\Question 3.vcxproj", "{75222C56-1598-49FC-A1EB-508174ADA386}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Question 9.3", "Question 9.3\Question 3.vcxproj", "{75222C56-1598-49FC-A1EB-508174ADA386}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,7 +8,7 @@ void main()
 	char str1[SIZE] = { '\0' };
 
 	char str2[SIZE] = { '\0' };
-	gets(str1, SIZE - 1);
+	gets_s(str1, SIZE - 1);
 	gets_s(str2, SIZE - 1);
 	printstr(str1, str2);
 
