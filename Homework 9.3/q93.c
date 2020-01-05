@@ -11,7 +11,6 @@ void main()
 	strSwitch(str);
 	printf("%s", str);
 
-
 }
 
 void strSwitch(char* str1)
