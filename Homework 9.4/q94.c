@@ -32,17 +32,22 @@ int dupeFinder(int* str1, int size1, int* str2, int size2, int* adress)
 				{
 					verifier = 0;
 				}
-				else verifier = -1;
+				else
+				{
+					verifier = -1;
+					break;
+				}
 			}
 			if (verifier == 0)
 			{
 				++counter;
+				if (counter == 0)
+				{
+					*adrs = i;
+					++counter;
+				}
 			}
-			if(counter==0)
-			{
-				*adrs = i;
-				++counter;
-			}
+			
 		}
 		
 		--tempsize;
