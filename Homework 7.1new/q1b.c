@@ -36,7 +36,7 @@ void num_arrayinput(int array[][SIZE], int size1, int size2)
 		for (int column = 0; column < size2; ++column)//column
 		{
 			printf("Enter value:[%d][%d]: \n", row+1, column + 1);
-			scanf(" %d", &array[row][column]);
+			scanf("%d", &array[row][column]);
 		}
 	}
 
@@ -55,7 +55,7 @@ void num_arrayinput(int array[][SIZE], int size1, int size2)
 void is_mirrored_array(const int array1[][SIZE], int size1, int size12, const int array2[][SIZE], int size2, int size22)
 {
 	//call function to enter numbers into arrays
-	int oldnum1, value = 0; //init 0, 1 true, 2 false
+	int value = 0; //init 0, 1 true, 2 false
 
 	for (int u = 0, j = size1 - 1; j > u; ++u, --j) // U:A0->An && J:An->U
 	{

@@ -15,7 +15,7 @@ void main()
 
 void strSwitch(char* str1)
 {
-	int count = strlen((str1));
+	size_t count = strlen((str1));
 	if (count % 2 != 0)
 	{
 		(*(str1 + count - 1)) = '\0';

@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #define SIZE 6
 void printBigger(int* ptr1, int size);
@@ -9,11 +8,11 @@ void main()
 	printf("Enter a number\n");
 	for (int i = 0; i < SIZE; i++)
 	{
-		scanf(" %d", &arr[i]);
+		scanf_s(" %d", &arr[i]);
 	}
 
 	printBigger(arr, SIZE);
-	system("pause");
+
 }
 
 void printBigger(int* ptr1,int size)
