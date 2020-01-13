@@ -1,8 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h> 
+#include <stdio.h>
+#include <windows.h>
 #include <string.h>
 void delay(unsigned int value);
 char* maxWord(char str[], char tav, int* num);
+
+
 
 void main()
 {
@@ -26,17 +29,18 @@ void main()
 		int i = 0;
 		while (num > 0)
 		{
-			delay(5000);
+			Sleep(40);
 			printf("%c", ptr[i]);
 			++i;
 			--num;
 		}
 	}
 	
-	char strend[] = { "\n\n----------\nDone...\n\nThank you for using this program!\n\nMade by Daniel Mizrahi\n\nShutting Down...\nBye! =]\n" };
+	char strend[] = { "\n\n----------\nDone...\n\nThank you for using this program!\n\nMade by Tydox\n\nShutting Down...\nBye! =]\n" };
 	while(strend[num])
 	{
-		delay(5000);
+		
+		Sleep(40);
 		printf("%c", strend[++num]);
 	}
 }
@@ -73,18 +77,4 @@ char* maxWord(char str[], char tav, int* num)
 		i = j;
 	}
 	return maxword;
-}
-
-void delay(unsigned int value)
-{
-	unsigned int count1 = 0;
-	unsigned int count2 = 0;
-
-	for (count1 = 0; count1 < value; count1++)
-	{
-		for (count2 = 0; count2 < count1; count2++)
-		{
-
-		}
-	}
 }
