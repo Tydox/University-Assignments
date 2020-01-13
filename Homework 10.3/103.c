@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <windows.h>
-#include <string.h>
+
 void delay(unsigned int value);
 char* maxWord(char str[], char tav, int* num);
 
@@ -29,7 +29,7 @@ void main()
 		int i = 0;
 		while (num > 0)
 		{
-			Sleep(40);
+			Sleep(30);
 			printf("%c", ptr[i]);
 			++i;
 			--num;
@@ -40,7 +40,7 @@ void main()
 	while(strend[num])
 	{
 		
-		Sleep(40);
+		Sleep(30);
 		printf("%c", strend[++num]);
 	}
 }
