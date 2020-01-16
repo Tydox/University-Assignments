@@ -13,10 +13,10 @@ void main()
 	char tav = 'a';
 	char str1[501] = { "\0" };
 	printf("Please enter a sentence: ");
-	scanf_s("%[^\n]s", str1,501);
+	scanf_s("%[^\n]s", str1, 501);
 	printf("\nEnter a letter: ");
-	scanf_s(" %c", &tav,1);
-	
+	scanf_s(" %c", &tav, 1);
+
 	char* ptr = maxWord(str1, tav, &num);
 	if (num == 0)
 	{
@@ -35,13 +35,14 @@ void main()
 			--num;
 		}
 	}
-	
+
 	char strend[] = { "\n\n----------\nDone...\n\nThank you for using this program!\n\nMade by Tydox\n\nShutting Down...\nBye! =]\n" };
-	while(strend[num])
+	while (*(strend + num))
 	{
 		
 		Sleep(30);
 		printf("%c", strend[++num]);
+		
 	}
 }
 
