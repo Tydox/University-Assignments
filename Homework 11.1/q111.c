@@ -10,10 +10,7 @@ int isPrime(int num);
 int main()
 {
     int psize = 0;
-    /////////////////////////////////////////////////////////////////////
     int* arrhead[SIZE2]; // pointer array of pointers
-    // The mistake begin here!!! UP
-    /////////////////////////////////////////////////////////////////////////
     int* arr1 = (int*)malloc(SIZE3 * sizeof(int)); //pointer array 1
     if (arr1 == NULL)
     {
