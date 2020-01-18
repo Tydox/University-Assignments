@@ -11,7 +11,7 @@ int isPrime(int* arr);
 int main()
 {
 	int psize=0;
-	int** arrhead[SIZE2]; // pointer array of pointers
+	int* arrhead[SIZE2]; // pointer array of pointers
 
 	int* arr1 = (int*)malloc(SIZE3 * sizeof(int)); //pointer array 1
 
@@ -29,8 +29,8 @@ int main()
 		return -1;
 	}
 	
-	*arrhead = &arr1;
-	*(arrhead+1) = &arr2;
+	*arrhead = arr1;
+	*(arrhead+1) = arr2;
 
 	char wtext[200] = { "Welcome to my Prime Number Investigator\nI will need you to enter numbers and then I will let you know after many hard calculations,\nwhich numbers are Prime Numbers\n" };
 	int s = 0;
@@ -50,16 +50,16 @@ int main()
 		}
 	}
 
-	int* adrprime = getPrimeArr(*arrhead, SIZE2, SIZE3, &psize);
+	int* adrprime = getPrimeArr(arrhead, SIZE2, SIZE3, &psize);
 
 	for (int i = 0; i < psize; ++i)
 	{
 		printf("%d", *(adrprime + i));
-		free(adrprime + i);
+
 	}
 	free(arr1);
 	free(arr2);
-	
+	free(adrprime);
 	arr1 = NULL;
 	arr2 = NULL;
 }
@@ -87,7 +87,7 @@ int* getPrimeArr(int** arr, int rows, int cols, int* psize)
 		puts("Memory Allocation Failed");
 		return NULL;
 	}
-
+	int w = 0;
 	//calculate the amount of prime numbers and insert them into the array
 	for (int i = 0; i < rows; ++i) // rows index
 	{
@@ -96,7 +96,8 @@ int* getPrimeArr(int** arr, int rows, int cols, int* psize)
 			flag = isPrime((*(arr + i) + j));
 			if (flag == 1)
 			{
-				(*(primenums + i)) = (*(*(arr + i) + j)); // put the value of the number in the new array
+				(*(primenums + w)) = (*(*(arr + i) + j)); // put the value of the number in the new array
+				++w;
 			}
 		}
 	}
@@ -112,7 +113,7 @@ int isPrime(int* arr)
 	{
 		return -1; // -1 means the number is not a prime nor composite
 	}
-	for (int i = 2; i < num / 2; ++i)
+	for (int i = 2; i <= num / 2; ++i)
 	{
 		if (num % i == 0)
 		{
