@@ -32,7 +32,7 @@ void main()
 	free(new_name);
 	free(people);
 	free((people + 1));
-	
+	new_name = NULL;
 	*people = NULL;
 	*(people+1) = NULL;
 }
@@ -93,17 +93,19 @@ char* name_Swap(char* name1, char* name2, int* opt)
 	{
 	case 1:
 	{
-		char* new_name = (char*)malloc(((strlen(name1))+1) * sizeof(char));
+		char* new_name = (char*)malloc(((strlen(name1)) + 1) * sizeof(char));
 		strcpy_s(new_name, SIZE, name1);
-		new_name = realloc(new_name, (((strlen(new_name)+1)+(strlen(name2+count_name2)) + 1)));
+		new_name = realloc(new_name, (((strlen(new_name) + 1) + (strlen(name2 + count_name2)) + 1)));
 		strcpy_s(new_name + count_name1, SIZE, name2 + count_name2);
 		return new_name;
 	}
 	case 2:
 		{
-		//	char* new_name = (char*)malloc(((strlen())))
-		//strcpy_s((name1 +strlen(name1)), 51, (name2 + (--count_name2)));
-			return name1;
+		char* new_name = (char*)malloc(((strlen(name1)) + 1) * sizeof(char));
+		strcpy_s(new_name, SIZE, name1);
+		new_name = realloc(new_name, (((strlen(new_name) + 1) + (strlen(name2 + count_name2)) + 1)));
+		strcpy_s((new_name+strlen(new_name)), SIZE, (name2 + (--count_name2)));
+		return new_name;
 		}
 	case 3:
 		{
@@ -115,8 +117,11 @@ char* name_Swap(char* name1, char* name2, int* opt)
 		}
 	case 4:
 		{
-		strcpy_s((name2 + strlen(name2)), 51, (name1 + (--count_name1)));
-		return name2;
+		char* new_name = (char*)malloc(((strlen(name2)) + 1) * sizeof(char));
+		strcpy_s(new_name, SIZE, name2);
+		new_name = realloc(new_name, (((strlen(new_name) + 1) + (strlen(name1 + count_name1)) + 1)));
+		strcpy_s((new_name + strlen(new_name)), SIZE, (name1 + (--count_name1)));
+		return new_name;
 		}
 	case 5:
 		return NULL;
