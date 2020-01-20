@@ -3,7 +3,7 @@
 #include <string.h>
 
 char* dyn_str_input();
-char* name_Swap(const char* name1, const char* name2, int* opt);
+char* name_Swap(char* name1,char* name2, int* opt);
 void printMenu();
 
 void main()
@@ -18,14 +18,18 @@ void main()
 	*people=dyn_str_input();
 	printf("Enter the full name of person 2: ");
 	*(people + 1) = dyn_str_input();
-	puts(*people);
-	puts(*(people+1));
+
 	printMenu();
 	printf("Enter a number: ");
 	scanf_s("%d", &option_choice);
-	char* new_name = name_Swap(*people, *(people + 1), &option_choice);
-	puts(new_name);
+	printf("\nBefore The Visit:\n\n");
+	puts(*people);
+	puts(*(people + 1));
+	printf("\nAfter the visit:\n%s", name_Swap(*people, *(people + 1), &option_choice));
+	
 
+	free(**people);
+	free(**(people + 1));
 	free(*people);
 	free(*(people + 1));
 	*people = NULL;
@@ -48,9 +52,9 @@ char* dyn_str_input() // user input data and return dynamic string address
 	return dyn_str;
 }
 
-char* name_Swap(const char* name1, const char* name2, int* opt)
+char* name_Swap(char* name1, char* name2, int* opt)
 {
-	char temp_name[51];
+
 	if (!((*opt >= 1) && (*opt <= 5))) // check if entered number is between 1-5 options
 	{
 		puts("Error, invalid number. \nEnd.\n");
@@ -68,25 +72,48 @@ char* name_Swap(const char* name1, const char* name2, int* opt)
 	}
 
 	int i = 0;
+	int count_name1 = 1;
+	while (*(name1 + i) != ' ')
+	{
+		++count_name1;
+		++i;
+	}
+
+	i = 0;
+	int count_name2 = 1;
+	while (*(name2 + i) != ' ')
+	{
+		++count_name2;
+		++i;
+	}
+
 	switch (*opt)
 	{
 	case 1:
-		{
-
-		int name_length = strlen(name1)-1;
-		while ((*(name1 + (name_length)) != ' '))
-		{
-			*(temp_name + (i++)) = *(name1 + (name_length--));
-		}
-		_strrev(temp_name);
-		*(temp_name + i) = '\0';
-		char* new_name = (char**)malloc((name_length + 1) * sizeof(char));
-		strcpy_s(new_name, name_length + 1, temp_name);
-		return new_name;
-		}
+	{
+			strcpy_s((name1 + count_name1), 51, (name2 + count_name2));
+	return name1;
 	}
-	
-	
+	case 2:
+		{
+		strcpy_s((name1 +strlen(name1)), 51, (name2 + (--count_name2)));
+			return name1;
+		}
+	case 3:
+		{
+		strcpy_s((name2 + count_name2), 51, (name1 + count_name1));
+		return name2;
+		}
+	case 4:
+		{
+		strcpy_s((name2 + strlen(name2)), 51, (name1 + (--count_name1)));
+		return name2;
+		}
+	case 5:
+		return NULL;
+		
+	}
+
 	return NULL;
 }
 
