@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define SIZE 51
 char* dyn_str_input();
 char* name_Swap(char* name1,char* name2, int* opt);
 void printMenu();
@@ -23,15 +24,15 @@ void main()
 	printf("Enter a number: ");
 	scanf_s("%d", &option_choice);
 	printf("\nBefore The Visit:\n\n");
-	puts(*people);
-	puts(*(people + 1));
-	printf("\nAfter the visit:\n%s", name_Swap(*people, *(people + 1), &option_choice));
+	printf("1: %s\n",*people);
+	printf("2: %s\n",*(people + 1));
+	char* new_name = name_Swap(*people, *(people + 1), &option_choice);
+	printf("\nAfter the visit:\n%s", new_name);
 	
-
-	free(**people);
-	free(**(people + 1));
-	free(*people);
-	free(*(people + 1));
+	free(new_name);
+	free(people);
+	free((people + 1));
+	
 	*people = NULL;
 	*(people+1) = NULL;
 }
@@ -39,8 +40,8 @@ void main()
 
 char* dyn_str_input() // user input data and return dynamic string address
 {
-	char temp_str[51];
-	scanf_s(" %[^\n]s", &temp_str,50);
+	char temp_str[SIZE];
+	scanf_s(" %[^\n]s", &temp_str,SIZE-1);
 	int size = strlen(temp_str)+1;
 	char* dyn_str = (char*)malloc((size) * sizeof(char));
 	if (dyn_str == NULL)
@@ -54,7 +55,8 @@ char* dyn_str_input() // user input data and return dynamic string address
 
 char* name_Swap(char* name1, char* name2, int* opt)
 {
-
+	
+	
 	if (!((*opt >= 1) && (*opt <= 5))) // check if entered number is between 1-5 options
 	{
 		puts("Error, invalid number. \nEnd.\n");
@@ -91,18 +93,25 @@ char* name_Swap(char* name1, char* name2, int* opt)
 	{
 	case 1:
 	{
-			strcpy_s((name1 + count_name1), 51, (name2 + count_name2));
-	return name1;
+		char* new_name = (char*)malloc(((strlen(name1))+1) * sizeof(char));
+		strcpy_s(new_name, SIZE, name1);
+		new_name = realloc(new_name, (((strlen(new_name)+1)+(strlen(name2+count_name2)) + 1)));
+		strcpy_s(new_name + count_name1, SIZE, name2 + count_name2);
+		return new_name;
 	}
 	case 2:
 		{
-		strcpy_s((name1 +strlen(name1)), 51, (name2 + (--count_name2)));
+		//	char* new_name = (char*)malloc(((strlen())))
+		//strcpy_s((name1 +strlen(name1)), 51, (name2 + (--count_name2)));
 			return name1;
 		}
 	case 3:
 		{
-		strcpy_s((name2 + count_name2), 51, (name1 + count_name1));
-		return name2;
+		char* new_name = (char*)malloc(((strlen(name2)) + 1) * sizeof(char));
+		strcpy_s(new_name, SIZE, name2);
+		new_name = realloc(new_name, (((strlen(new_name) + 1) + (strlen(name1+count_name1)) + 1)));
+		strcpy_s(new_name + count_name2, SIZE, name1 + count_name1);
+		return new_name;
 		}
 	case 4:
 		{
