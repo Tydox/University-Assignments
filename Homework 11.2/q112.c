@@ -4,7 +4,7 @@
 
 #define SIZE 51
 char* dyn_str_input();
-char* name_Swap(char* name1,char* name2, int* opt);
+char* name_Swap(char* name1, char* name2, int* opt);
 void printMenu();
 
 void main()
@@ -13,36 +13,37 @@ void main()
 	char* people[2];
 	int option_choice = 5;
 
-	
+
 	printf("Welcome to Ministry of Interior\nPlease remember to abide to the rules.\nWhen entering a full name (given name and surname) make sure to have a space between the names!\nMake sure you press a valid option number.\n--------------------\n");
 	printf("Enter the full name of person 1: ");
-	*people=dyn_str_input();
+	*people = dyn_str_input();
 	printf("Enter the full name of person 2: ");
 	*(people + 1) = dyn_str_input();
 
 	printMenu();
 	printf("Enter a number: ");
-	scanf_s("%d", &option_choice);
+	scanf_s("%d", &option_choice,1);
 	printf("\nBefore The Visit:\n\n");
-	printf("1: %s\n",*people);
-	printf("2: %s\n",*(people + 1));
-	char* new_name = name_Swap(*people, *(people + 1), &option_choice);
-	printf("\nAfter the visit:\n%s", new_name);
+	printf("1: %s\n", *people);
+	printf("2: %s\n", *(people + 1));
+	char* newname = name_Swap(*people, *(people + 1), &option_choice);
+	printf("\nAfter the visit:\n%s", newname);
+
 	
-	free(new_name);
-	free(people);
-	free((people + 1));
-	new_name = NULL;
+	free(*people);
+	free(*(people + 1));
+	free(newname);
+	newname = NULL;
 	*people = NULL;
-	*(people+1) = NULL;
+	*(people + 1) = NULL;
 }
 
 
 char* dyn_str_input() // user input data and return dynamic string address
 {
 	char temp_str[SIZE];
-	scanf_s(" %[^\n]s", &temp_str,SIZE-1);
-	int size = strlen(temp_str)+1;
+	scanf_s(" %[^\n]s", &temp_str, SIZE - 1);
+	int size = strlen(temp_str) + 1;
 	char* dyn_str = (char*)malloc((size) * sizeof(char));
 	if (dyn_str == NULL)
 	{
@@ -55,8 +56,8 @@ char* dyn_str_input() // user input data and return dynamic string address
 
 char* name_Swap(char* name1, char* name2, int* opt)
 {
-	
-	
+
+
 	if (!((*opt >= 1) && (*opt <= 5))) // check if entered number is between 1-5 options
 	{
 		puts("Error, invalid number. \nEnd.\n");
@@ -74,58 +75,60 @@ char* name_Swap(char* name1, char* name2, int* opt)
 	}
 
 	int i = 0;
-	int count_name1 = 1;
+	int count_fname1 = 1;
+	
 	while (*(name1 + i) != ' ')
 	{
-		++count_name1;
+		++count_fname1;
 		++i;
 	}
-
+	int count_lname1 = strlen(name1) - count_fname1;
+	
 	i = 0;
-	int count_name2 = 1;
+	int count_fname2 = 1;
 	while (*(name2 + i) != ' ')
 	{
-		++count_name2;
+		++count_fname2;
 		++i;
 	}
-
+	
+	int count_lname2 = strlen(name2) - count_fname2;
+	
 	switch (*opt)
 	{
 	case 1:
 	{
-		char* new_name = (char*)malloc(((strlen(name1)) + 1) * sizeof(char));
-		strcpy_s(new_name, SIZE, name1);
-		new_name = realloc(new_name, (((strlen(new_name) + 1) + (strlen(name2 + count_name2)) + 1)));
-		strcpy_s(new_name + count_name1, SIZE, name2 + count_name2);
+		char* new_name = (char*)malloc(((count_fname1 + count_lname2)+1) * sizeof(char));
+		memcpy(new_name, name1, count_fname1);
+		memcpy(new_name + count_fname1, name2+count_fname2, count_lname2+1);
 		return new_name;
 	}
 	case 2:
-		{
-		char* new_name = (char*)malloc(((strlen(name1)) + 1) * sizeof(char));
-		strcpy_s(new_name, SIZE, name1);
-		new_name = realloc(new_name, (((strlen(new_name) + 1) + (strlen(name2 + count_name2)) + 1)));
-		strcpy_s((new_name+strlen(new_name)), SIZE, (name2 + (--count_name2)));
-		return new_name;
-		}
+	{
+
+		char* new_name = (char*)malloc(((strlen(name1)) + count_lname2+2) * sizeof(char));
+		memcpy(new_name, name1, strlen(name1)+1);
+		memcpy(new_name+strlen(name1), name2 + count_fname2-1, count_lname2+2);
+			return new_name;
+	}
 	case 3:
-		{
-		char* new_name = (char*)malloc(((strlen(name2)) + 1) * sizeof(char));
-		strcpy_s(new_name, SIZE, name2);
-		new_name = realloc(new_name, (((strlen(new_name) + 1) + (strlen(name1+count_name1)) + 1)));
-		strcpy_s(new_name + count_name2, SIZE, name1 + count_name1);
+	{
+		char* new_name = (char*)malloc(((count_fname2 + count_lname1) + 1) * sizeof(char));
+		memcpy(new_name, name2, count_fname2);
+		memcpy(new_name + count_fname2, name1 + count_fname1, count_lname1 + 1);
 		return new_name;
-		}
+	}
 	case 4:
-		{
-		char* new_name = (char*)malloc(((strlen(name2)) + 1) * sizeof(char));
-		strcpy_s(new_name, SIZE, name2);
-		new_name = realloc(new_name, (((strlen(new_name) + 1) + (strlen(name1 + count_name1)) + 1)));
-		strcpy_s((new_name + strlen(new_name)), SIZE, (name1 + (--count_name1)));
-		return new_name;
-		}
+	{
+		char* new_name = (char*)malloc(((strlen(name2)) + count_lname1+2) * sizeof(char));
+		memcpy(new_name, name2, strlen(name2)+1);
+		memcpy(new_name+strlen(name2), name1 + count_fname1-1, count_lname1+2);
+			return new_name;
+			
+	}
 	case 5:
 		return NULL;
-		
+
 	}
 
 	return NULL;
