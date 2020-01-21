@@ -27,7 +27,21 @@ void main()
 	printf("1: %s\n", *people);
 	printf("2: %s\n", *(people + 1));
 	char* newname = name_Swap(*people, *(people + 1), &option_choice);
-	printf("\nAfter the visit:\n%s", newname);
+	printf("\nAfter the visit:\n");
+	if (option_choice == 1 || option_choice == 2)
+	{
+		printf("%s\n", newname);
+		printf("%s\n\n Bye Bye!", *(people + 1));
+	}
+	else
+		if (option_choice == 3 || option_choice == 4)
+		{
+			printf("%s\n", newname);
+			printf("%s\n\nBye Bye!", *people);
+		}
+		else
+			printf("\nYou've chosen to decide later, no changes were made\nBye Bye!\n");
+
 
 	
 	free(*people);
