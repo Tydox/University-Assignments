@@ -40,6 +40,7 @@ void main()
 			printf("%s\n\nBye Bye!", *people);
 		}
 		else
+			if(option_choice==5)
 			printf("\nYou've chosen to decide later, no changes were made\nBye Bye!\n");
 
 
