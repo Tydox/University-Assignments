@@ -183,7 +183,7 @@ void my_strcpy(char a[], char b[], int sizeA)
 	if (sizeA == 0)
 	{
 		*a = '\0';
-		return NULL;
+		return;
 	}
 
 	*a = *b;
