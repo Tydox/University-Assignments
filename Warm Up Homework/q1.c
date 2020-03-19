@@ -20,16 +20,16 @@ typedef struct
 
 typedef struct
 {
-	char* name;
-	int users_amount;
-	Suspect** suspects;
+	Suspect* init_call;
+	int suspects_amount;
+	Suspect* suspects;
 	Date call_date;
 	
 } Call;
 
 typedef struct
 {
-	Call* array;
+	Call* c_list;
 	int size;
 
 } Call_list;
@@ -44,43 +44,28 @@ typedef struct
 
 void init_suspect(Suspect_list* list, int size);
 
+void init_call(Suspect_list* slist, int ssize, Call_list* clist, int csize);
 
 void main()
 {
 	Suspect_list sl1;
-	int size = 0;
+	int slist = 0;
 	
-	init_suspect(&sl1, size++);
-	//printf("0%d\n", (sl1.person[size - 1].phone_nbr));
+	//init_suspect(&sl1, slist++);
+	//free(sl1.person);
+	
+	Call_list cl1;
+	int clist = 0;
+	
+	init_call(&sl1, slist, &cl1,clist);
 
-	free(sl1.person);
+	
+	
 }
 
-//void init_suspect(Suspect* sus_array, int* size)
-//{
-//	//char temp_num[11]={"00.00.0000"};
-//	//++*size;
-//	//sus_array = (Suspect*)realloc(sus_array, (*size)*sizeof(Suspect));
-//	//if(!sus_array)
-//	//{
-//	//	printf("Error Mem Alloc\n");
-//	//	exit(0);
-//	//}
-//	//
-//	//printf("Enter your suspects phone number[10 digits]: ");
-//	//scanf_s(" %10d", (sus_array+*size)->phone_nbr);
-//	//printf("Enter your suspects arrest date[dd.mm.yyyy]: ");
-//	//scanf_s(" %[^\n]s", temp_num,8);
-//	//memcpy(sus_array[*size].end_date.day, temp_num,2);
-//	//memcpy(sus_array[*size].end_date.month, temp_num+3, 2);
-//	//memcpy(sus_array[*size].end_date.year, temp_num + 6, 4);
-//
-//	
-//}
 
 void init_suspect(Suspect_list* list, int size)
 {
-	//++size;
 	if (size>0)
 		list->person = (Suspect*)realloc(list->person, (++size) * sizeof(Suspect)); //size +1 array
 
@@ -101,6 +86,52 @@ void init_suspect(Suspect_list* list, int size)
 
 		printf("Enter End day[dd:mm:yyyy]: ");// end date
 		scanf_s(" %d:%d:%d", &(list->person[size-1].end_date.day), &(list->person[size-1].end_date.month), &(list->person[size-1].end_date.year));
+
+	
+}
+
+void init_call(Suspect_list* slist, int ssize, Call_list* clist, int csize)
+{
+	if (csize == 0)
+		clist->c_list = (Call*)malloc((++csize) * sizeof(Call));
+	else
+		clist->c_list = (Call*)realloc(clist->c_list,(++csize) * sizeof(Call));
+	if (!(clist->c_list))
+	{
+		printf("Mem Alloc failed on init_suspect!\n");
+		exit(1);
+	}
+
+	clist->c_list[csize - 1].init_call = (Suspect*)malloc(sizeof(Suspect));
+	if (!(clist->c_list[csize - 1].init_call))
+	{
+		printf("Mem Alloc failed on init_suspect!\n");
+		exit(1);
+	}
+
+		printf("Enter Phone number of initiate suspect: ");
+		scanf_s(" %d", &(clist->c_list[csize - 1].init_call->phone_nbr));		
+		printf("Enter the number of participants: ");
+		scanf_s(" %d", &(clist->c_list[csize - 1].suspects_amount));
+		printf("Enter the suspects numbers:\n");
+		clist->c_list->suspects = (Suspect*)malloc((clist->c_list[csize - 1].suspects_amount) * sizeof(Suspect));
+		if (!(clist->c_list->suspects))
+		{
+			printf("Mem Alloc failed on init_suspect!\n");
+			exit(1);
+		}
+
+	for(int i=0;i< clist->c_list[csize - 1].suspects_amount;++i)
+		{
+		printf("Suspect [%d]: ", i + 1);
+		scanf_s(" %d", &(clist->c_list[csize - 1].suspects[i].phone_nbr));
+		}
+
+
+	
+	free(clist->c_list[csize - 1].init_call);
+	free(clist->c_list->suspects);
+	free(clist->c_list);
 
 	
 }
