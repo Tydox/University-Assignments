@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct{
+typedef struct {
 	long id;
 	union Grade {
 		char grade_char;
@@ -18,8 +18,8 @@ void main()
 {
 
 	StudentGrade* Daniel = NULL;
-		Daniel = init_student_grade(Daniel);
-		print_student_grade(Daniel);
+	Daniel = init_student_grade(Daniel);
+	print_student_grade(Daniel);
 
 	free(Daniel);
 }
@@ -46,18 +46,18 @@ StudentGrade* init_student_grade(StudentGrade* student_name)
 		scanf_s("%d", &opt_val);
 
 	}
-	
-	if (opt_val == 1)
-		{
-			printf("Enter the Grade in Characters [A/B/C/D/E/F]: ");
-			scanf_s(" %c", &(student_name->grade.grade_char), 2);
 
-		}
+	if (opt_val == 1)
+	{
+		printf("Enter the Grade in Characters [A/B/C/D/E/F]: ");
+		scanf_s(" %c", &(student_name->grade.grade_char), 2);
+
+	}
 	else if (opt_val == 2)
-		{
-			printf("Enter the Grade in Decimal Number[0-100]: ");
-			scanf_s(" %d", &(student_name->grade.grade_num));
-		}
+	{
+		printf("Enter the Grade in Decimal Number[0-100]: ");
+		scanf_s(" %d", &(student_name->grade.grade_num));
+	}
 	return student_name;
 }
 
@@ -65,7 +65,7 @@ void print_student_grade(StudentGrade* student_name)
 {
 	printf("Student ID: %d\n", student_name->id);
 
-	if (student_name->grade.grade_char >='A' && student_name->grade.grade_char<='F')
+	if (student_name->grade.grade_char >= 'A' && student_name->grade.grade_char <= 'F')
 		printf("Student Grade: %c", student_name->grade.grade_char);
 	else
 		printf("Student Grade: %d", student_name->grade.grade_num);
