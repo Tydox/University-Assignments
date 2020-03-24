@@ -120,6 +120,7 @@ void main()
 
 int numorder(int* numarr, int size, int num)
 {
+	
 	if (num == 1)
 	{
 		if (numarr[num - 1] > 0)
