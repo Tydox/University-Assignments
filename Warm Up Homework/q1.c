@@ -79,7 +79,7 @@ void init_suspect(Suspect_list* list, int size)
 	}
 	
 		printf("Enter Phone Number [10 digits]: "); // phone number
-		scanf_s(" %10d", &(list->person[size-1].phone_nbr));
+		scanf_s(" %010d", &(list->person[size-1].phone_nbr));
 
 		printf("Enter Start date[dd:mm:yyyy]: ");// start date
 		scanf_s(" %d:%d:%d", &(list->person[size-1].start_date.day), &(list->person[size-1].start_date.month), &(list->person[size-1].start_date.year));
@@ -124,8 +124,50 @@ void init_call(Suspect_list* slist, int ssize, Call_list* clist, int csize)
 	for(int i=0;i< clist->c_list[csize - 1].suspects_amount;++i)
 		{
 		printf("Suspect [%d]: ", i + 1);
-		scanf_s(" %d", &(clist->c_list[csize - 1].suspects[i].phone_nbr));
+		scanf_s(" %010d", &(clist->c_list[csize - 1].suspects[i].phone_nbr));
 		}
+
+	int clistnum = clist->c_list[csize - 1].suspects_amount;
+	clist->c_list[csize - 1].suspects_amount = 0;
+	// compare clist suspects init call phone numbers with slist person phone number 	
+	for (int i = 0; i < clist->c_list[csize - 1].suspects_amount; ++i)
+	{
+		//first row, we go by call suspect to compare with the list of suspects
+
+		for (int j = 0; j < slist->size; ++j)
+		{
+			//running on columns 
+			//check if suspect and call person phone numbers are matching
+				
+			if (slist->person[j].phone_nbr == clist->c_list[csize - 1].init_call->phone_nbr)
+			{
+				//check if init call sus same as one of the sus in the list
+				++(clist->c_list[csize - 1].suspects_amount);
+			}
+
+
+			for (int w = 0; w < clistnum; ++w)
+			{
+				if (slist->person[j].phone_nbr == clist->c_list[csize - 1].suspects[w].phone_nbr)
+				{
+					//check if init call sus list same as one of the sus in the list
+					++(clist->c_list[csize - 1].suspects_amount);
+				}
+			}
+		}
+	}
+	free(clist->c_list->suspects);
+	clist->c_list->suspects = (Suspect*)malloc((clist->c_list[csize - 1].suspects_amount) * sizeof(Suspect));
+	clistnum = clist->c_list[csize - 1].suspects_amount;
+	for (int j = 0; j < slist->size; ++j)
+		{
+			for (int w = 0; w < clistnum; ++w)
+			{
+				//copy suspect from list to call list log
+				clist->c_list[csize - 1].suspects[w] = slist->person[j];
+			}
+		}
+	
 
 
 	
