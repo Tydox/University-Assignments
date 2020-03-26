@@ -46,6 +46,8 @@ void init_suspect(Suspect_list* list, int size);
 
 void init_call(Suspect_list* slist, int ssize, Call_list* clist, int csize);
 
+int suspect_count(Suspect* suspect_name, Suspect_list* sus_list, Call_list* call_list);
+
 void main()
 {
 	Suspect_list sl1;
@@ -86,7 +88,7 @@ void init_suspect(Suspect_list* list, int size)
 
 		printf("Enter End day[dd:mm:yyyy]: ");// end date
 		scanf_s(" %d:%d:%d", &(list->person[size-1].end_date.day), &(list->person[size-1].end_date.month), &(list->person[size-1].end_date.year));
-
+		list->size = size;
 	
 }
 
@@ -176,4 +178,31 @@ void init_call(Suspect_list* slist, int ssize, Call_list* clist, int csize)
 	free(clist->c_list);
 
 	
+}
+
+int suspect_count(Suspect* suspect_name, Suspect_list* sus_list, Call_list* call_list)
+{
+	int suspect_list_size = --(sus_list->size);
+	if (suspect_list_size == 0)
+	{
+		int stop_sum = 0;
+		if (suspect_name->phone_nbr == call_list->c_list->init_call->phone_nbr)
+		{
+			++stop_sum;
+		}
+		int temp = call_list->c_list->suspects_amount;
+		while (temp > 0);
+		{
+			if (suspect_name->phone_nbr == call_list->c_list->suspects[temp - 1].phone_nbr);
+			{
+				++stop_sum;
+			}
+				--temp;
+		}
+		return stop_sum;
+	}
+	int sum = 0;
+	
+	sum = suspect_count(suspect_name, sus_list, call_list)+sum;
+		return sum;
 }
