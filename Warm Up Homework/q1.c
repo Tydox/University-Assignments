@@ -129,50 +129,8 @@ void init_call(Suspect_list* slist, int ssize, Call_list* clist, int csize)
 		scanf_s(" %010d", &(clist->c_list[csize - 1].suspects[i].phone_nbr));
 		}
 
-	int clistnum = clist->c_list[csize - 1].suspects_amount;
-	clist->c_list[csize - 1].suspects_amount = 0;
-	// compare clist suspects init call phone numbers with slist person phone number 	
-	for (int i = 0; i < clist->c_list[csize - 1].suspects_amount; ++i)
-	{
-		//first row, we go by call suspect to compare with the list of suspects
-
-		for (int j = 0; j < slist->size; ++j)
-		{
-			//running on columns 
-			//check if suspect and call person phone numbers are matching
-				
-			if (slist->person[j].phone_nbr == clist->c_list[csize - 1].init_call->phone_nbr)
-			{
-				//check if init call sus same as one of the sus in the list
-				++(clist->c_list[csize - 1].suspects_amount);
-			}
-
-
-			for (int w = 0; w < clistnum; ++w)
-			{
-				if (slist->person[j].phone_nbr == clist->c_list[csize - 1].suspects[w].phone_nbr)
-				{
-					//check if init call sus list same as one of the sus in the list
-					++(clist->c_list[csize - 1].suspects_amount);
-				}
-			}
-		}
-	}
-	free(clist->c_list->suspects);
-	clist->c_list->suspects = (Suspect*)malloc((clist->c_list[csize - 1].suspects_amount) * sizeof(Suspect));
-	clistnum = clist->c_list[csize - 1].suspects_amount;
-	for (int j = 0; j < slist->size; ++j)
-		{
-			for (int w = 0; w < clistnum; ++w)
-			{
-				//copy suspect from list to call list log
-				clist->c_list[csize - 1].suspects[w] = slist->person[j];
-			}
-		}
-	
-
-
-	
+		
+		
 	free(clist->c_list[csize - 1].init_call);
 	free(clist->c_list->suspects);
 	free(clist->c_list);
@@ -180,29 +138,56 @@ void init_call(Suspect_list* slist, int ssize, Call_list* clist, int csize)
 	
 }
 
-int suspect_count(Suspect* suspect_name, Suspect_list* sus_list, Call_list* call_list)
+Suspect* getParticipate(Suspect_list* slist, Suspect* check)
 {
-	int suspect_list_size = --(sus_list->size);
-	if (suspect_list_size == 0)
+	if (slist->size == 0)
 	{
-		int stop_sum = 0;
-		if (suspect_name->phone_nbr == call_list->c_list->init_call->phone_nbr)
+		if (slist->person[slist->size].phone_nbr == check->phone_nbr)
 		{
-			++stop_sum;
+			return &(slist->person[slist->size]); // Match found	
 		}
-		int temp = call_list->c_list->suspects_amount;
-		while (temp > 0);
+		else
 		{
-			if (suspect_name->phone_nbr == call_list->c_list->suspects[temp - 1].phone_nbr);
+			return NULL; // Stop rule - no match was found 
+		}
+
+		if (slist->size != 0)
+		{
+			if (slist->person[slist->size].phone_nbr == check->phone_nbr)
 			{
-				++stop_sum;
+				return &(slist->person[slist->size]); // Match found	
 			}
-				--temp;
+			else
+			{
+				
+				return getParticipate(&(slist->person[slist->size - 1]), &check); //Recursive call
+			}
 		}
-		return stop_sum;
+
 	}
-	int sum = 0;
-	
-	sum = suspect_count(suspect_name, sus_list, call_list)+sum;
-		return sum;
+}
+
+int* getParticipate(Suspect_list* slist, Suspect* check)
+{
+	if (slist->size == 0) {
+		if (slist->person[slist->size].phone_nbr == check->phone_nbr) {
+			return 1; // Match found	
+		}
+		else
+		{
+			return 0; // Stop rule - no match was found 
+		}
+
+		if (slist->size != 0)
+		{
+			if (slist->person[slist->size].phone_nbr == check->phone_nbr) {
+				return 1 + getParticipate(&(slist->person[slist->size - 1]), &check); //Recursive call
+			}
+			else
+			{
+				return 0 + getParticipate(&(slist->person[slist->size - 1]), &check); //Recursive call
+			}
+		}
+
+	}
 }
