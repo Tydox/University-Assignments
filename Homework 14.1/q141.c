@@ -19,7 +19,7 @@ typedef struct file {
 		}d;
 	}content;
 	
-}File; // total size is 164 with data, with folder well its unlimited since malloc duh bitch stfu nigga piece of shit
+}File; // total size is 164 with data
 
 
 int printf_files(File* name);
