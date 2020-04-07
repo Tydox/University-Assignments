@@ -22,7 +22,7 @@ typedef struct file {
 }File; // total size is 164 with data, with folder well its unlimited since malloc duh bitch stfu nigga piece of shit
 
 
-void printf_files(File* name);
+int printf_files(File* name);
 File* new_files(char data_type);
 
 
@@ -34,143 +34,42 @@ main() {
 	scanf_s(" %c", &optchar,2);
 	f1 = new_files(optchar);
 
-	printf_files(f1);
-	//testing
-	/*printf("File Name: %s\n", f1->file_name);
-	printf("Type: %c\n", f1->content.f.file_name);
-	printf("Data: %u\n", f1->content.f.files_num);*/
-	//free(f1);
+	printf("\nFolder Size: %d", printf_files(f1));
 };
 
 
-void printf_files(File* name)
+int printf_files(File* name)
 {
-	if (*(name->data_type) == 'f') {
-		//empty size 0
-		if (name->content.f.files_num == 0) {
-			//printf("Empty Folder\n");
-			printf("\nFile Name: %s\n", name->file_name);
-			printf("Type: %s\n", name->data_type);
-			printf("Size: %u\n", name->content.f.files_num);
-
-			return;
-		}
-		if (name->content.f.files_num >= 1) {
-			if (*(name->data_type) == 'd' && name->content.f.files_num == 1)
-			{
-				printf("\nFile Name: %s\n", name->file_name);
-				printf("Type: %s\n", name->data_type);
-				printf("Data: %s\n", name->content.d.text);
-				free(name);
-				return;
-			}
-			else if (*(name->data_type) == 'f') {
-				if (name->content.f.files_num == 1)
-				{
-					printf("\nDDFile Name: %s\n", name->file_name);
-					printf("Type: %s\n", name->data_type);
-					printf("Amount: %u\n", name->content.f.files_num);
-					printf_files(name->content.f.file_name[0]);
-					free(name);
-					return;
-				}
-				else {
-					for (unsigned j = 0; j < name->content.f.files_num ;++j)
-					{
-						if ((name->content.f.file_name[j]->data_type[0]) == 'd')
-						{
-							printf("\nFile Name: %s\n", name->content.f.file_name[j]->file_name);
-							printf("Type: %s\n", name->content.f.file_name[j]->data_type);
-							printf("Data: %s\n", name->content.f.file_name[j]->content.d.text);
-							free(name->content.f.file_name[j]);
-						}
-						else if (*(name->content.f.file_name[j]->data_type) == 'f')
-						{
-							printf("\nFile Name: %s\n", name->content.f.file_name[j]->file_name);
-							printf("Type: %s\n", name->content.f.file_name[j]->data_type);
-							printf("Size: %u\n", name->content.f.file_name[j]->content.f.files_num);
-							printf_files(name->content.f.file_name[j]->content.f.file_name[0]);
-
-						}
-					}
-
-				}
-			}
-		}
+	int size = 0;
+	//stop 1
+	if (*(name->data_type) == 'f' && name->content.f.files_num == 0)
+	{
+		return 0;
 	}
-	else
-		if (*(name->data_type) == 'd')
-		{
-			printf("\nFile Name: %s\n", name->file_name);
-			printf("Type: %s\n", name->data_type);
-			printf("Data: %s\n", name->content.d.text);
-			free(name);
-			return;
-		}
-}
-
+	//stop 2
+	if (*(name->data_type) == 'd')
+	{
+		size = strlen(name->content.d.text)+1;
+		return size;
+	}
 	
+	if (*(name->data_type) == 'f') {
 
+		for (unsigned j = 0; j < name->content.f.files_num; ++j)
+		{
+			if (*(name->content.f.file_name[j]->data_type) == 'f')
+			{
+				return size += printf_files(name->content.f.file_name[j]);
+			}
+			if ((name->content.f.file_name[j]->data_type[0]) == 'd')
+			{
+				size += strlen(&(name->content.f.file_name[j]->content.d))+1;
+				free(name->content.f.file_name[j]);
+			}
+		}
 
-
-	//if (*(name->data_type) == 'd') {
-	//	for (unsigned int i = 0; i < name->content.f.files_num; ++i) {
-	//		if (*(name->data_type) == 'd')
-	//		{
-	//			printf("\nFile Name: %s\n", name->file_name);
-	//			printf("Type: %s\n", name->data_type);
-	//			printf("Data: %s\n", name->content.d.text);
-	//			free(name);
-	//			return;
-	//		}
-	//	}
-	//}
-	//else
-	//	if (*(name->data_type) == 'f')
-	//	{
-	//		printf empty folder
-	//		if (name->content.f.files_num == 0) {
-	//			printf("\nDDFile Name: %s\n", name->file_name);
-	//			printf("Type: %s\n", name->data_type);
-	//			printf("Amount: %u\n", name->content.f.files_num);
-	//			free(name);
-	//			return;
-	//		}
-	//		else {
-	//			for (unsigned int i = 0; i < name->content.f.files_num; ++i)
-	//			{
-	//				if (i == 0) {
-	//					printf("\nGGFile Name: %s\n", name->file_name);
-	//					printf("Type: %s\n", name->data_type);
-	//					printf("Amount: %u\n", name->content.f.files_num);
-	//					printf_files(name->content.f.file_name[i]);
-	//				}
-	//				else
-	//				{
-	//					if (i != 0)
-	//					{
-	//						if (name->content.f.file_name[i]->content.f.files_num > 0) {
-	//							printf("\nFile Name: %s\n", name->content.f.file_name[i]->file_name);
-	//							printf("Type: %s\n", name->content.f.file_name[i]->data_type);
-	//							printf("Amount: %u\n", name->content.f.file_name[i]->content.f.files_num);
-	//							printf_files(name->content.f.file_name[++i]);
-	//						}
-	//						else
-	//							printf_files(name->content.f.file_name[i]);
-	//					}
-	//				}
-	//				
-	//			
-	//				
-	//				
-	//			}
-	//			for (unsigned int i = 0; i < name->content.f.files_num; ++i) {
-	//					free(name->content.f.file_name[i]->content.f.files_num);
-	//			}
-	//			free(name);
-	//			return;
-	//		}
-	//	}
+	}
+}
 
 File* new_files(char data_type)
 {

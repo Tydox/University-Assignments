@@ -80,7 +80,7 @@ void retainOddAndOppisetEven(Stack* S) {
 		unevenstack = (S->top) / 2;
 		even_stack.stackSize = evenstack;
 		noteven_stack.stackSize = unevenstack;
-		new_even_stack.stackSize = unevenstack + evenstack;
+		new_even_stack.stackSize = unevenstack;
 		even_stack.Items = (int*)malloc(evenstack * sizeof(int));
 		noteven_stack.Items = (int*)malloc(unevenstack * sizeof(int));
 		new_even_stack.Items = (int*)malloc((unevenstack) * sizeof(int));
