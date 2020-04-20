@@ -181,7 +181,7 @@ Item* deletePointIdx(Item* head, int idx)
 	}
 }
 
-
+ 
 Item* reverse(Item* head)
 {
 	if (!head)
