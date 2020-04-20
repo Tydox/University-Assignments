@@ -23,36 +23,41 @@ void print(char* s);
 Node* addToHead(Node* head, Node* toAdd);
 char pop(Stack* s);
 void printLK(Stack* s);
-Stack* tempstack(Stack* s);
+int isPlindrom(Stack* s);
+
 
 
 void main()
 {
 	Stack* s1 = (Stack*)malloc(sizeof(Stack));
-	//s1->head =(Node*)malloc(sizeof(Node));
 	if (s1 == NULL)
 	{
 		printf("No Memory");
 		return;
 	}
-
-	char str[] = "Remem#reb# thi#carp s#tice";
+	s1->head=NULL;
+	char str[] = "123321";
 
 	int length = (int)strlen(str);
 
 	for (int i = length - 1; i > -1; --i)
 		push(s1, str[i]);
 
-	//pop
-	//printf("%c\n",pop(s1));
-	printLK(s1);
 	//print
-	/*Node* node = s1->head;
-	while (node != NULL)
-	{
-		printf("%c", node->data);
-		node = node->next;
-	}*/
+	//Node* node = s1->head;
+	//while (node->next != NULL)
+	//{
+	//	printf("%c", node->data);
+	//	node = node->next;
+	//}
+	//after
+	//
+	//printf("Before: %s\nAfter: ",str);
+	//printLK(s1);
+	
+	int x=isPlindrom(s1);
+	printf("%d",x);
+	
 }
 
 void push(Stack* s, char data)
@@ -64,6 +69,7 @@ void push(Stack* s, char data)
 		return;
 	}
 	new_node->data = data;
+	
 	s->head = addToHead(s->head, new_node);
 }
 
@@ -91,10 +97,16 @@ void printLK(Stack* s)
 {
 	if (s->head != NULL)
 	{
-		while ((s->head->data) != '#')
+		while (s->head!=NULL)
 		{
+			if((s->head->data) != '#')
 			printf("%c", pop(s));
+			else
+			break;
 		}
+		if(s->head==NULL)
+			return;
+		
 		//skip #
 		if (s->head->data == '#')
 			s->head = s->head->next;
@@ -118,6 +130,9 @@ void printLK(Stack* s)
 			--count;
 		}
 	}
+	if(s->head==NULL)
+	return;
+	
 	pop(s);
 	printLK(s);
 
@@ -125,38 +140,51 @@ void printLK(Stack* s)
 }
 
 
-Stack* tempstack(Stack* s)
+int isPlindrom(Stack* s)
 {
-	int count = 1;
-
-
-	return NULL;
-}
-
-
-/*start
-Node* temp=(Node*)malloc(sizeof(Node));
-if (temp == NULL)
-{
-	printf("No Memory"); return;
-}
-	s->head=temp;
-
-
-Node* head=temp;
-int length=strlen(data);
-for(int i =0;i<length;++i)
+	int count = 0,danno;
+	Node* temp=s->head;
+	while (temp != NULL)
 	{
-	if (i==0)
-	{
-		
-	memcpy(&(temp->data), data+i, 1);
-		
-		Node* head=(Node*)malloc(sizeof(Node));
-			if (head == NULL)
-			{
-				printf("No Memory"); return;
-			}
-			
+		++count;
+		temp = temp->next;		
 	}
-}*/
+	danno = count;
+	Stack* temp1 = (Stack*)malloc((count/2)*sizeof(Stack));
+	if (temp1 == NULL) { printf("NO MEMORY"); return -1; }
+	int x= danno/2;
+	
+	if(danno%2==0)
+	{
+		while (count >danno/2)
+	{
+		push(temp1, pop(s));
+		--count;
+		}
+	}
+	else
+	{
+		count=0;
+		while (count<x)
+	{
+		push(temp1, pop(s));
+		++count;
+	}
+	if(danno%2==1)
+		pop(s);
+	}
+
+	
+	while ((s->head != NULL) && (temp1->head != NULL))
+	{
+		char x = pop(s);
+		char y = pop(temp1);
+		if (x != y)
+		{
+			return 0;
+		}
+	}
+	return 1;
+
+}
+
