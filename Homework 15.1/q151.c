@@ -18,12 +18,11 @@ typedef struct Stack
 
 void push(Stack* s, char data);
 char pop(Stack* s);
-int isEmpty(Stack s);
-void print(char* s);
 Node* addToHead(Node* head, Node* toAdd);
-char pop(Stack* s);
 void printLK(Stack* s);
 int isPlindrom(Stack* s);
+void rotate(Stack *s, int n);
+
 
 
 
@@ -36,7 +35,7 @@ void main()
 		return;
 	}
 	s1->head=NULL;
-	char str[] = "123321";
+	char str[] = "fedcba";
 
 	int length = (int)strlen(str);
 
@@ -52,11 +51,12 @@ void main()
 	//}
 	//after
 	//
-	//printf("Before: %s\nAfter: ",str);
-	//printLK(s1);
+	printf("Before: %s\nAfter: ",str);
+	rotate(s1,3);
+	printLK(s1);
 	
-	int x=isPlindrom(s1);
-	printf("%d",x);
+	//int x=isPlindrom(s1);
+	//printf("%d",x);
 	
 }
 
@@ -135,8 +135,6 @@ void printLK(Stack* s)
 	
 	pop(s);
 	printLK(s);
-
-	return;
 }
 
 
@@ -188,3 +186,39 @@ int isPlindrom(Stack* s)
 
 }
 
+void rotate(Stack *s, int n)
+{
+	Stack* temp1 = (Stack*)malloc(sizeof(Stack));
+	Stack* temp2 = (Stack*)malloc(sizeof(Stack));
+	if (temp1 == NULL || temp2==NULL)
+	{
+		printf("No Memory");
+		return;
+	}
+	Node* index=s->head;
+	int size=0;
+	while(index!=NULL)
+	{
+		++size;
+		index=index->next;
+	}
+	int new_size=size-n;
+	for(int j=0;j<new_size;++j)
+	{
+		push(temp1,pop(s));
+	}
+	for(int w=0;w<n;++w)
+	{
+		push(temp2,pop(s));
+	}
+	for(int j=0;j<new_size;++j)
+	{
+		push(s,pop(temp1));
+	}
+	for(int w=0;w<n;++w)
+	{
+		push(s,pop(temp2));
+	}
+	free(temp1);
+	free(temp2);
+}
