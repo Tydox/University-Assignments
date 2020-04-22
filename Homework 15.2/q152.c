@@ -48,35 +48,138 @@ void main()
 	//enQueue(lk,1);
 	//enQueue(lk,3);
 	
-	int user_input=1;
-	int i=0;
-	printf("Numbers Input:\nEnter any positive number\nTo stop enter a negative number\n");
 	
-	while(user_input > 0)
-	{
-		printf("%d:",i++);
-		scanf_s(" %d",&user_input);
-		if(user_input>0)
-		enQueue(lk,user_input);
-	}
+	
 
-	printf("Before:");
-	Node* idx = lk->head;
-	while (idx != NULL)
+	printf(	"Functions List:\n1.Add numbers [Must Do First]\n2.Remove a number [Delete first in queue]\n3.Rotate [Bring last in queue to first]\n4.Cut & Replace [Weird Scramble]\n5.Sort [small->big]\n0.Exit\n\nEnter Option: ");
+	int opt = -1;
+	while (opt != 0)
 	{
-		printf("%d", idx->data);
-		idx = idx->next;
-	}
-	sort(lk);
-	//cutAndReplace(lk);
-	idx = lk->head;
-	printf("\nAfter:");
-	while (idx != NULL)
-	{
-		printf("%d", idx->data);
-		idx = idx->next;
+		scanf_s(" %d", &opt);
+		switch (opt)
+		{
+		case 1:
+			{
+				printf("Numbers Input: [Enter X>0 || Stop X<0]\n");
+				int user_input = 1;
+				int i = 0;
+				while (user_input > 0)
+				{
+					printf("%d:", i++);
+					scanf_s(" %d", &user_input);
+					if (user_input > 0)
+						enQueue(lk, user_input);
+				}
+				
+				printf("You have input:");
+				Node* idx = lk->head;
+				while (idx != NULL)
+				{
+					printf("%d,", idx->data);
+					idx = idx->next;
+				}
+				printf("\n\nEnter new option: ");
+				break;
+			}
+		case 2:
+			{
+				printf("Data that was removed: %d", deQueue(lk));
+				printf("\n\nEnter new option: ");
+				break;
+			}
+		case 3:
+			{
+				printf("Before Reverse: ");
+				Node* idx = lk->head;
+				while (idx != NULL)
+				{
+					printf("%d,", idx->data);
+					idx = idx->next;
+				}
+				rotate(lk);
+				printf("\nAfter Reverse: ");
+				idx = lk->head;
+				while (idx != NULL)
+				{
+					printf("%d,", idx->data);
+					idx = idx->next;
+				}
+				printf("\n\nEnter new option: ");
+				break;
+			}
+		case 4:
+			{
+				printf("Before Cut: ");
+				Node* idx = lk->head;
+				while (idx != NULL)
+				{
+					printf("%d,", idx->data);
+					idx = idx->next;
+				}
+				cutAndReplace(lk);
+				printf("\nAfter Cut: ");
+				idx = lk->head;
+				while (idx != NULL)
+				{
+					printf("%d,", idx->data);
+					idx = idx->next;
+				}
+				printf("\n\nEnter new option: ");
+				break;
+			}
+		case 5:
+			{
+				printf("Before Sort: ");
+				Node* idx = lk->head;
+				while (idx != NULL)
+				{
+					printf("%d,", idx->data);
+					idx = idx->next;
+				}
+				sort(lk);
+				printf("\nAfter sort: ");
+				idx = lk->head;
+				while (idx != NULL)
+				{
+					printf("%d,", idx->data);
+					idx = idx->next;
+				}
+				printf("\n\nEnter new option: ");
+				break;
+
+			}
+		case 0:
+			{
+				printf("This Program was made by Daniel, thank you for trying it =]\n");
+				break;
+			}
+		default:
+			{
+				printf("Invalid option!\nEnter new option: ");
+				break;
+			}
+		}
 	}
 }
+
+
+//printf("Before:");
+//Node* idx = lk->head;
+//while (idx != NULL)
+//{
+//	printf("%d", idx->data);
+//	idx = idx->next;
+//}
+//sort(lk);
+////cutAndReplace(lk);
+//idx = lk->head;
+//printf("\nAfter:");
+//while (idx != NULL)
+//{
+//	printf("%d", idx->data);
+//	idx = idx->next;
+//}
+
 
 int isEmpty(Queue* q)
 {
@@ -274,18 +377,17 @@ void sort(Queue* q)
 		exit(69);
 	}
 
-	while (!isEmpty(q) || smallQ!=bigQ)
+	while (!isEmpty(q) || smallQ != bigQ)
 	{
-		while ( y != 0)
+		while (y != 0)
 		{
-			
 			if (x <= y)
 			{
 				enQueue(bigQ, y);
-				if(isEmpty(q))
-					y=0;
-			
-			//	if (!isEmpty(q))
+				if (isEmpty(q))
+					y = 0;
+
+				//	if (!isEmpty(q))
 				//	y = deQueue(q);
 			}
 			else
@@ -294,12 +396,12 @@ void sort(Queue* q)
 				x = y;
 				//y = deQueue(q);
 			}
-			if(!isEmpty(q))
+			if (!isEmpty(q))
 			{
-			y = deQueue(q);
+				y = deQueue(q);
 			}
 		}
-		
+
 
 		if (isEmpty(q))
 		{
@@ -310,7 +412,7 @@ void sort(Queue* q)
 		{
 			enQueue(q, deQueue(bigQ));
 		}
-		
+
 
 		if (isEmpty(q))
 		{
@@ -328,6 +430,6 @@ void sort(Queue* q)
 
 		x = deQueue(q);
 		if (!isEmpty(q))
-	    y = deQueue(q);
+			y = deQueue(q);
 	}
 }
