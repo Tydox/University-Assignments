@@ -31,24 +31,7 @@ void main()
 	{
 		printf("Heap Error, Exiting.\n");
 		exit(69);
-	}
-
-	//enQueue(lk,1);
-	//enQueue(lk,2);
-	//enQueue(lk,3);
-	//enQueue(lk,4);
-	//enQueue(lk,5);
-	//enQueue(lk,6);
-
-	//enQueue(lk, 3);
-	//enQueue(lk, 7);
-	//enQueue(lk, 4);
-	//enQueue(lk, 9);
-	//enQueue(lk, 5);
-	//enQueue(lk,1);
-	//enQueue(lk,3);
-	
-	
+	}	
 	
 
 	printf(	"Functions List:\n1.Add numbers [Must Do First]\n2.Remove a number [Delete first in queue]\n3.Rotate [Bring last in queue to first]\n4.Cut & Replace [Weird Scramble]\n5.Sort [small->big]\n0.Exit\n\nEnter Option: ");
@@ -162,25 +145,6 @@ void main()
 	}
 }
 
-
-//printf("Before:");
-//Node* idx = lk->head;
-//while (idx != NULL)
-//{
-//	printf("%d", idx->data);
-//	idx = idx->next;
-//}
-//sort(lk);
-////cutAndReplace(lk);
-//idx = lk->head;
-//printf("\nAfter:");
-//while (idx != NULL)
-//{
-//	printf("%d", idx->data);
-//	idx = idx->next;
-//}
-
-
 int isEmpty(Queue* q)
 {
 	//check if both pointers at start are NULL
@@ -285,6 +249,8 @@ void rotate(Queue* q)
 		//enQueue into Temp Queue
 		enQueue(q, temp_data);
 	}
+
+	free(temp_queue);
 }
 
 void cutAndReplace(Queue* q)
@@ -360,6 +326,9 @@ void cutAndReplace(Queue* q)
 		//deQueue + enQueue to secondary
 		enQueue(q, deQueue(temp_queue));
 	}
+
+	free(temp_queue);
+	free(temp_queue2);
 }
 
 void sort(Queue* q)
