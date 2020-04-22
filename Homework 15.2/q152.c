@@ -31,10 +31,11 @@ void main()
 	{
 		printf("Heap Error, Exiting.\n");
 		exit(69);
-	}	
-	
+	}
 
-	printf(	"Functions List:\n1.Add numbers [Must Do First]\n2.Remove a number [Delete first in queue]\n3.Rotate [Bring last in queue to first]\n4.Cut & Replace [Weird Scramble]\n5.Sort [small->big]\n0.Exit\n\nEnter Option: ");
+
+	printf(
+		"Functions List:\n1.Add numbers [Must Do First]\n2.Remove a number [Delete first in queue]\n3.Rotate [Bring last in queue to first]\n4.Cut & Replace [Weird Scramble]\n5.Sort [small->big]\n0.Exit\n\nEnter Option: ");
 	int opt = -1;
 	while (opt != 0)
 	{
@@ -43,7 +44,7 @@ void main()
 		{
 		case 1:
 			{
-				printf("Numbers Input: [Enter X>0 || Stop X<0]\n");
+				printf("Numbers Input: [Enter X>0 || Stop X=0]\n");
 				int user_input = 1;
 				int i = 0;
 				while (user_input > 0)
@@ -53,7 +54,7 @@ void main()
 					if (user_input > 0)
 						enQueue(lk, user_input);
 				}
-				
+
 				printf("You have input:");
 				Node* idx = lk->head;
 				while (idx != NULL)
@@ -129,7 +130,6 @@ void main()
 				}
 				printf("\n\nEnter new option: ");
 				break;
-
 			}
 		case 0:
 			{
