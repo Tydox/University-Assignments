@@ -67,7 +67,7 @@ void addStudent(Class * c)
 		return;
 	}
 	
-	char name[30];
+	char name[30]={'\0'};
 	printf("Enter students name: ");
 	scanf(" %[^\n]s", name);
 	char* name1=(char*)calloc(strlen(name)+1,sizeof(char));
